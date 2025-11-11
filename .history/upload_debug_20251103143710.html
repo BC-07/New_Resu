@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Upload Debug Test</title>
+    <script src="/static/js/modules/upload.js"></script>
+</head>
+<body>
+    <h1>Upload Module Debug Test</h1>
+    
+    <!-- Test Elements -->
+    <div id="positionTypesUpload">Position types will load here</div>
+    <div id="regularUploadZone" style="display: none;">Upload Zone</div>
+    <input type="file" id="regularFileUpload" multiple accept=".pdf,.xlsx" style="display: none;">
+    <div id="uploadInstructions">Upload Instructions</div>
+    <div id="selectedPositionInfo" style="display: none;">Selected Position Info</div>
+    
+    <script>
+        console.log('Testing UploadModule...');
+        
+        // Test if UploadModule exists
+        if (typeof UploadModule !== 'undefined') {
+            console.log('✅ UploadModule is available');
+            console.log('UploadModule methods:', Object.keys(UploadModule));
+            
+            // Test initialization
+            try {
+                UploadModule.init();
+                console.log('✅ UploadModule.init() completed');
+            } catch (error) {
+                console.error('❌ UploadModule.init() failed:', error);
+            }
+            
+            // Test job postings loading
+            try {
+                UploadModule.loadJobPostings();
+                console.log('✅ UploadModule.loadJobPostings() called');
+            } catch (error) {
+                console.error('❌ UploadModule.loadJobPostings() failed:', error);
+            }
+        } else {
+            console.error('❌ UploadModule is not available');
+        }
+    </script>
+</body>
+</html>
